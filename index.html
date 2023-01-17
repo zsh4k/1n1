@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Serie uno en uno</h1>
+    <form>
+        <label for="numI">Numero Inicial:</label>
+        <br>
+        <input type="number" id="numI" name="numI">
+        <br>
+        <label for="numF">Numero Final:</label>
+        <br>
+        <input type="number" id="numF" name="numF">
+        <br>
+        <br>
+        <button type="button" id="printButton">Mostrar Numeros</button>
+        <br>
+        <br>
+        <div id="mostrar"></div>
+    </form>
+    <script>
+      const printButton = document.getElementById("printButton");
+      printButton.addEventListener("click", () => {
+        const inicio = document.getElementById("numI").value;
+        const fin = document.getElementById("numF").value;
+        let mostrar = "";
+        const p = "<p>";
+
+        if (inicio <= 0 && fin <= 0) {
+          //Aqui se manejan los negativos con negativos
+          if (inicio < fin) {
+            for (let i = inicio; i != fin; i--) {
+              mostrar += p + i;
+            }
+          } else if (inicio > fin) {
+            for (let i = inicio; i != fin; i++) {
+              mostrar += p + i;
+            }
+          }
+          mostrar += p + fin;
+          //Aqui se manejan los positivos y combinados
+        } else if (inicio <= fin) {
+          for (let i = inicio; i <= fin; i++) {
+            mostrar += p + i;
+          }
+        } else {
+          for (let i = inicio; i >= fin; i--) {
+            mostrar += p + i;
+          }
+        }
+
+        document.getElementById("mostrar").innerHTML = mostrar;
+      });
+    </script>
+  </body>
+</html>
